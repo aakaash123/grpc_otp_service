@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express with gRPC and EJS</title>
+</head>
+<body>
+    <h1>Express with gRPC and EJS</h1>
+    <p><%= message %></p>
+
+    <% if (step === 'enterNumber') { %>
+        <form action="/get-otp" method="POST">
+            <label for="number">Enter Mobile Number:</label>
+            <input type="text" id="number" name="number" value="<%= number %>">
+            <button type="submit">Get OTP</button>
+        </form>
+    <% } else if (step === 'enterOtp') { %>
+        <form action="/validate-otp" method="POST">
+            <input type="hidden" name="number" value="<%= number %>">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" name="otp" value="<%= otp %>">
+            <button type="submit">Validate OTP</button>
+        </form>
+    <% } else if (step === 'validated') { %>
+        <p>Your number has been successfully validated! Welcome!</p>
+    <% } %>
+</body>
+</html>
